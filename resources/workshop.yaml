@@ -1,0 +1,39 @@
+apiVersion: training.eduk8s.io/v1alpha2
+kind: Workshop
+metadata:
+  name: tanzu-cloudnative-runtimes
+spec:
+  title: Serverless Development using Tanzu Cloud Native Runtimes
+  description: A workshop to showcase serverless capabilities in Tanzu
+  vendor: eduk8s.io
+  difficulty: beginner
+  duration: 15m
+  url: https://github.com/boskey/tanzu-cloudnative-runtimes
+  content:
+    #image: quay.io/eduk8s/lab-markdown-sample:master
+    files: github.com/boskey/tanzu-cloudnative-runtimes
+  session:
+    namespaces:
+      budget: medium
+    applications:
+      terminal:
+        enabled: true
+        layout: split
+      console:
+        enabled: true
+        vendor: octant
+      editor:
+        enabled: true
+    objects:
+    - apiVersion: rbac.authorization.k8s.io/v1
+      kind: ClusterRoleBinding
+      metadata:
+        name: $(session_namespace)-cluster-admin
+      roleRef:
+        apiGroup: rbac.authorization.k8s.io
+        kind: ClusterRole
+        name: cluster-admin
+      subjects:
+      - kind: ServiceAccount
+        namespace: $(workshop_namespace)
+        name: $(service_account)    

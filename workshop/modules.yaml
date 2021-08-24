@@ -1,0 +1,12 @@
+modules:
+    overview:
+        name: Tanzu Cloud Native Runtimes Overview
+    view-environment:
+        name: Environment Overview
+    exercises/01-sample-application:
+        name: Deploy a Sample Application
+    exercises/02-serving-sample-app:   
+        name: Traffic Management based on versions
+    summary:
+        name: Summary
+        exit_sign: Finish
