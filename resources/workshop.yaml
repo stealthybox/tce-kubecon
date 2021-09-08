@@ -10,7 +10,7 @@ spec:
   duration: 15m
   url: https://github.dev/Boskey/tce-dev-guide
   content:
-    image: ghcr.io/boskey/tce-educates
+    image: ghcr.io/boskey/tce-educates:latest
     files: github.com/boskey/tce-dev-guide
   session:
     namespaces:
