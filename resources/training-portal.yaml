@@ -1,13 +1,13 @@
 apiVersion: training.eduk8s.io/v1alpha1
 kind: TrainingPortal
 metadata:
-  name: tanzu-cloudnative-runtimes
+  name: tce-worksops
 spec:
   portal:
     registration:
       type: anonymous
   workshops:
-  - name: tanzu-cloudnative-runtimes
+  - name: tce-dev-guide
     capacity: 3
     expires: 60m
     orphaned: 5m
