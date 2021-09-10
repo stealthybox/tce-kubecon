@@ -3,7 +3,8 @@ name: Cloud Native Runtimes
 modules:
     activate:
     - overview
-    - view-environment
-    - exercises/01-sample-application
-    - exercises/02-serving-sample-app
+    - excercises/01-deploy-modern-apps
+    - exercises/02-scale-application
+    - exercises/03-publish-application
+    - exercises/04-microservices
     - summary
