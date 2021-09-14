@@ -1,7 +1,7 @@
 modules:
     overview:
         name: Tanzu Community Edition Overview
-    excercises/01-deploy-modern-apps:
+    exercises/01-deploy-modern-apps:
         name: Deploy Modern Apps
     exercises/02-scale-application:
         name: Scale Applications
