@@ -1,123 +1,35 @@
-So far we created a service for a containerized app based on Spring and have external traffic flowing to it. 
+We just deployed a containerized application, by default when we do not specify any scale options, only one instance of the application pod gets deployed.
 
-Imagine, you made some improvements to the app, you want to roll the new version out but are not sure about how users might react to the changes. You want to maybe conduct A/B test to see user behavior/reaction.
+If the application pod instance dies for some reason, Kubernetes will bring it back automatically.
 
-CLoud Native runtimes can help you roll newer versions of your app and manage traffic flow to the services
+Lets, kill the pod we just deployed and check the status
+```execute
+kubectl delete pod $(kubectl get pods | grep petclinic  | awk '{print $1}' )
+```
+You will see a message saying the Pod is deleted, notice the name of the pod in the message.
 
-# Routes
-Evertime we deploy a service using Cloud Native Runtimes, the service gets a revision automatically assigned to it. 
-
-For e.g, for the servive we deployed earlier, the revision can be found out useing:
+Now, let's look at the pods still running
 
 ```execute
-kubectl get revision  -A| grep $SESSION_NAMESPACE
+kubectl get pods
 ```
+You will notice a new pod has spun up with a different name for Petclinic. 
 
-Observe the second field, the revision is usually the $SERVICE_NAME-00001 for the intial deployment.
+Unless the deployment is deleted, application pods will automatically re-spin to the count that was specified.
 
-Let's say we changed the Pets picture from the original app and containered the new app as `v2`
+### Let's scale the application
 
-We now want to deploy `v2` version of the app, maybe direct 50% of the incomming traffic to app v2 and if all looks well direct all traffic to app v2.
+Scaling an application is very simple, you specify the no. of instances you want for a Deployment, Kubernetes will automatically scale the apps to the desired state.
 
-First, lets install app v2. Execute the below command. Notice the container image is different now and has the new app v2. Also notice, we are deploying v2 with the same service name as before
+Currently, the petclinic application only has one instance, let's scale the app to have 3 instances. When we deployed petclinic in the earlier lesson, Kubernetes automatically created a Replica Set that sets the no. of Pods for this application to be 1 ( since we did not specify a count). 
+```execute
+kubectl scale deployment/petclinic --replicas=3
+```
+This will scale the pods for petclinic to a count of 3. Let's confirm by listing pods
 
 ```execute
-cat <<EOF | kubectl apply  -f -
-apiVersion: serving.knative.dev/v1 # Current version of Knative
-kind: Service
-metadata:
-  name: $SESSION_NAMESPACE-1 # The name of the app
-  namespace: $WORKSHOP_NAMESPACE # The namespace the app will use
-spec:
-  template:
-    spec:
-      containers:
-        - image: ghcr.io/boskey/petclinic2
-EOF
+kubectl get pods
 ```
-Wait for a minute for the deployment to proceed. Once app v2 is deployed, you will notice the service now has two revisions
+You should see three pods for the petclinic application.
 
-```execute
-kubectl get revision  -A| grep $SESSION_NAMESPACE
-```
-If you click at the application URL from before, 100 % of the traffic is still going to app v1 with the old image.
 
-## Try refreshing the application tab we opened before
-
-Now, lets update the service such that incoming traffic is split between v1 and v2 50-50
-
-Notice the `spec.traffic` element in the file below
-Execute below to update the service. 
-```execute
-cat <<EOF | kubectl apply  -f -
-apiVersion: serving.knative.dev/v1 # Current version of Knative
-kind: Service
-metadata:
-  name: $SESSION_NAMESPACE-1 # The name of the app
-  namespace: $WORKSHOP_NAMESPACE # The namespace the app will use
-spec:
-  template:
-    spec:
-      containers:
-        - image: ghcr.io/boskey/petclinicv2
-          imagePullPolicy: Always
-  traffic:
-  - tag: current
-    revisionName: $SESSION_NAMESPACE-1-00001 
-    percent: 50
-  - tag: candidate
-    revisionName: $SESSION_NAMESPACE-1-00002
-    percent: 50
-  - tag: latest
-    latestRevision: true
-    percent: 0   
-EOF
-```
-
-Give the service a few seconds to be re-configured and updated. 
-
-## Refresh the application tab we opened before a few times
-
-Execute the below to fetch the URL for app again
-```execute
-kubectl get ksvc $SESSION_NAMESPACE-1 -n $WORKSHOP_NAMESPACE
-```
-You will notice that the traffic is now splitting between the old and new version after each refresh
-
-Okay, now that we see the new app v2 and everythings seems to be fine, lets move all the traffic coming to the new app v2
-
-Execute the below, notice the traffic is now defined to go to revision for app v2 only.
-
-```execute
-cat <<EOF | kubectl apply  -f -
-apiVersion: serving.knative.dev/v1 # Current version of Knative
-kind: Service
-metadata:
-  name: $SESSION_NAMESPACE-1 # The name of the app
-  namespace: $WORKSHOP_NAMESPACE # The namespace the app will use
-spec:
-  template:
-    spec:
-      containers:
-        - image: ghcr.io/boskey/petclinicv2
-          imagePullPolicy: Always
-  traffic:
-  - tag: current
-    revisionName: $SESSION_NAMESPACE-1-00001 
-    percent: 0
-  - tag: candidate
-    revisionName: $SESSION_NAMESPACE-1-00002
-    percent: 100
-  - tag: latest
-    latestRevision: true
-    percent: 0   
-EOF
-```
-## Refresh the application tab we opened before a few times
-
-Execute the below to fetch the URL for app again
-```execute
-kubectl get ksvc $SESSION_NAMESPACE-1 -n $WORKSHOP_NAMESPACE
-```
-
-Notice you only see the new version of the app.
