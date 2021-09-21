@@ -31,7 +31,8 @@ tanzu package installed list
 We can also verify this by looking at the Pods in the Clusters
 
 ```execute
-kubectl get pods -n prometheus, grafana
+kubectl get pods -n prometheus
+kubectl get pods -n grafana
 ```
 
 Let's logon to Grafana and look at the metrics from the application `Petcilinic` that we deployed in Exercise-1
