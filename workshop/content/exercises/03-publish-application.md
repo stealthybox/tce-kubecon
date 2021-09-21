@@ -5,7 +5,7 @@ In order to receive traffic we need to publish the app to have a service. Let's 
 Publish Petclinic using a service call `petclinic-service`
 
 ```execute
-kubectl expose deployment/petclinic --port 80 --target-port 8080 --type=LoadBalancer
+kubectl expose deployment/petclinic-{{session_namespace}} --port 80 --target-port 8080 --type=LoadBalancer
 
 ```
 
