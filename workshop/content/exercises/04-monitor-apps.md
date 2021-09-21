@@ -39,7 +39,7 @@ Let's logon to Grafana and look at the metrics from the application `Petcilinic`
 
 ```dashboard:create-dashboard
 name: Grafana
-url: https://grafna.tanzu-dev.com
+url: https://grafana.tanzu-dev.com
 ```
 
 Log on to the dashbaod with username/password as `admin/admin`

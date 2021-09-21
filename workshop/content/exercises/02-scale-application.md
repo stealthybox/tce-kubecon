@@ -13,6 +13,7 @@ Now, let's look at the pods still running
 ```execute
 kubectl get pods
 ```
+
 You will notice a new pod has spun up with a different name for Petclinic. 
 
 Unless the deployment is deleted, application pods will automatically re-spin to the count that was specified.

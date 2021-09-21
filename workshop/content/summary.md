@@ -4,8 +4,8 @@ It also helps installing additional tooling needed to Update, Manage and Monitor
 
 To learn More about Tanzu Community Edition:
 
-Website: tanzucommunityedition.io
-Github:  vmware-tanzu/community-edition
+Website: **tanzucommunityedition.io**
+Github:  **vmware-tanzu/community-edition**
 
 
 Thank you!
