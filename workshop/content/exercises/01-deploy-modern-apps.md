@@ -21,7 +21,35 @@ name: Console
 Let's deploy a spring based application. This is an application that has a directory of clinics/veterinarians to look up for pets.
 
 ```execute
-kubectl create deployment petclinic --image ghcr.io/boskey/petclinic
+cat << EOF | kubectl apply -f -
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: petclinic-{{session_namespace}}
+spec:
+  selector:
+    matchLabels:
+      app: petclinic
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: petclinic
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "8080"
+        prometheus.io/path: "/actuator/prometheus"
+    spec:
+      containers:
+        - name: petclinic
+          image: ghcr.io/boskey/petclinic:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          resources:
+            limits:
+              memory: 294Mi
+EOF
 ```
 
 Notice the pods deployed withe the above command

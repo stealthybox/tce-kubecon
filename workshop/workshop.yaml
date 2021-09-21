@@ -6,5 +6,5 @@ modules:
     - exercises/01-deploy-modern-apps
     - exercises/02-scale-application
     - exercises/03-publish-application
-    - exercises/04-microservices
+    - exercises/04-monitor-apps
     - summary

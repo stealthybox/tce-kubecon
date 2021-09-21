@@ -12,7 +12,7 @@ Users can leverage **Tanzu CLI** to create a Kubernetes Cluster and add addition
 * Familiarize with Tanzu CLI
 * Deploy Modern Apps
 * Scale Applications
-* Build Micro-services
+* Monitor Applications
   
 Tanzu Community Edition is already deployed and running on the environment.
 To see various options execute below

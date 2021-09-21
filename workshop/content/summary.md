@@ -1,3 +1,11 @@
-With Cloud Native Runtimes, you can deploy and build services for containized application without having the need to understand various Kubernetes constructs
+Tanzu Community Edition provides a quickstart way to provision a Kubernetes centric platform on any Infrastructure/Cloud Provider of choice. 
 
-Also, you can easily perform blue-green deployments and upgrade apps seemlesly.
+It also helps installing additional tooling needed to Update, Manage and Monitor Modern Applications.
+
+To learn More about Tanzu Community Edition:
+
+Website: tanzucommunityedition.io
+Github:  vmware-tanzu/community-edition
+
+
+Thank you!

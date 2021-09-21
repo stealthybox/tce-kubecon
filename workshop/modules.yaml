@@ -7,8 +7,8 @@ modules:
         name: Scale Applications
     exercises/03-publish-application:
         name: Publish Applications
-    exercises/04-microservices:   
-        name: Deploy Microservices
+    exercises/04-monitor-apps:   
+        name: Monitor Applications
     summary:
         name: Summary
         exit_sign: Finish
