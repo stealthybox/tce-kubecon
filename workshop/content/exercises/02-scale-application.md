@@ -23,7 +23,7 @@ Scaling an application is very simple, you specify the no. of instances you want
 
 Currently, the petclinic application only has one instance, let's scale the app to have 3 instances. When we deployed petclinic in the earlier lesson, Kubernetes automatically created a Replica Set that sets the no. of Pods for this application to be 1 ( since we did not specify a count). 
 ```execute
-kubectl scale deployment/petclinic --replicas=3
+kubectl scale deployment/petclinic-{{session_namespace}} --replicas=3
 ```
 This will scale the pods for petclinic to a count of 3. Let's confirm by listing pods
 
