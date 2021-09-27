@@ -1,7 +1,7 @@
 apiVersion: training.eduk8s.io/v1alpha1
 kind: TrainingPortal
 metadata:
-  name: tce-worksops
+  name: tce-workshops
 spec:
   portal:
     registration:

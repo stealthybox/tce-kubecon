@@ -28,12 +28,76 @@ spec:
     - apiVersion: rbac.authorization.k8s.io/v1
       kind: ClusterRoleBinding
       metadata:
-        name: $(session_namespace)-cluster-admin
+        name: $(session_namespace)-tanzu-addons-manager
       roleRef:
         apiGroup: rbac.authorization.k8s.io
         kind: ClusterRole
-        name: cluster-admin
+        name: tanzu-addons-manager-clusterrole
       subjects:
       - kind: ServiceAccount
         namespace: $(workshop_namespace)
-        name: $(service_account)    
+        name: $(service_account)
+    - apiVersion: rbac.authorization.k8s.io/v1 
+      kind: ClusterRoleBinding
+      metadata:
+        name: $(session_namespace)-tanzu-capabilities-manager
+      roleRef:
+        apiGroup: rbac.authorization.k8s.io
+        kind: ClusterRole
+        name: tanzu-capabilities-manager-clusterrole
+      subjects:
+      - kind: ServiceAccount
+        namespace: $(workshop_namespace)
+        name: $(service_account) 
+    - apiVersion: rbac.authorization.k8s.io/v1 
+      kind: ClusterRoleBinding
+      metadata:
+        name: $(session_namespace)-data-packagemanager-carvel
+      roleRef:
+        apiGroup: rbac.authorization.k8s.io
+        kind: ClusterRole
+        name:  $(workshop_namespace)-data-packagemanager-carvel
+      subjects:
+      - kind: ServiceAccount
+        namespace: $(workshop_namespace)
+        name: $(service_account)
+    - apiVersion: rbac.authorization.k8s.io/v1 
+      kind: ClusterRoleBinding
+      metadata:
+        name: $(session_namespace)-monitorns-view
+      roleRef:
+        apiGroup: rbac.authorization.k8s.io
+        kind: ClusterRole
+        name:  $(workshop_namespace)-monitorns-view
+      subjects:
+      - kind: ServiceAccount
+        namespace: $(workshop_namespace)
+        name: $(service_account)         
+  environment:
+    objects:
+    - apiVersion: rbac.authorization.k8s.io/v1
+      kind: ClusterRole
+      metadata:
+        name: $(workshop_namespace)-data-packagemanager-carvel
+      rules:
+        - apiGroups:
+            - data.packaging.carvel.dev
+          resources:
+            - packagemetadatas
+          verbs:
+            - get
+            - list
+            - watch
+    - apiVersion: rbac.authorization.k8s.io/v1
+      kind: ClusterRole
+      metadata:
+        name: $(workshop_namespace)-monitorns-view
+      rules:
+        - apiGroups:
+            - ""
+          resources:
+            - pods
+          verbs:
+            - get
+            - list
+            - watch
