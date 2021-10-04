@@ -16,6 +16,10 @@ tanzu package available list
 We can install Promethues and Grafana by simply selecting the version from the available packages list. 
 
 # Install Prometheus & Grafana
+
+Below commands will install Prometheus and Grafana on the cluster.
+**Note: These are made non-executable on purpose as the Kubernetes Cluster is shared. Re-running the below commands will show a message that they are already configured or installed. **
+
 ```
 tanzu package install prometheus --package-name prometheus.community.tanzu.vmware.com --version 2.27.0 
 ```
@@ -37,14 +41,15 @@ kubectl get pods -n grafana
 
 Let's logon to Grafana and look at the metrics from the application `Petcilinic` that we deployed in Exercise-1
 
-```dashboard:create-dashboard
-name: Grafana
-url: https://grafana.tanzu-dev.com
+Let's get the service URL for Grafana Dashboard.
+
+```execute
+kubectl get svc -n grafana | awk '{print $4}'
 ```
+Copy the URL and paste it in a new browser tab. The user name to logon to is `tce` and password is `TCEuser@Grafana`
 
-Log on to the dashbaod with username/password as `admin/admin`
 
-Go to the Dashbaord `Petclinic`
+Go to the Dashbaord `JVM(Micrometer)`
 
-You will see Promethues already scrapping metrics from your application as well as the underlying Kubernetes Infrastructure.
+You will see Promethues already scrapping metrics from your application.
 
