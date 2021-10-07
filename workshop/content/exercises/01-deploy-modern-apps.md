@@ -42,7 +42,7 @@ spec:
     spec:
       containers:
         - name: petclinic
-          image: ghcr.io/boskey/petclinic:latest
+          image: ghcr.io/stealthybox/petclinic:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8080

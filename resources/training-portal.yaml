@@ -7,7 +7,7 @@ spec:
     registration:
       type: anonymous
   workshops:
-  - name: tce-dev-guide
+  - name: tce-kubecon
     capacity: 3
     expires: 60m
     orphaned: 5m

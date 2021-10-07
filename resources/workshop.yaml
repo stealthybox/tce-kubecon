@@ -1,17 +1,17 @@
 apiVersion: training.eduk8s.io/v1alpha2
 kind: Workshop
 metadata:
-  name: tce-dev-guide
+  name: tce-kubecon
 spec:
   title: Tanzu Community Edition Getting Started
   description: Learn how Tanzu Community Edition can help you
   vendor: eduk8s.io
   difficulty: beginner
   duration: 15m
-  url: https://github.dev/Boskey/tce-dev-guide
+  url: https://github.dev/stealthybox/tce-kubecon
   content:
-    image: ghcr.io/boskey/tce-educates:latest
-    files: github.com/boskey/tce-dev-guide
+    image: ghcr.io/stealthybox/tce-educates:latest
+    files: github.com/stealthybox/tce-kubecon
   session:
     namespaces:
       budget: medium
