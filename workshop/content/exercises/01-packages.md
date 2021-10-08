@@ -13,11 +13,11 @@ To take a look at the packages that can be configured, installed, and updated, r
 tanzu package available list 
 ```
 
-We can install Promethues and Grafana by simply selecting the version from the available packages list. 
+We can install Prometheus and Grafana by simply selecting the version from the available packages list. 
 
 # Install Prometheus & Grafana
 
-For our platform we need Promethues and Grafana.
+For our platform we need Prometheus and Grafana.
 
 Prometheus is a tool that can ingest application metrics and store them in a time series database.
 Grafana lets us visualize metrics that Prometheus gathers in our own custom dashboards.

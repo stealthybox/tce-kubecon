@@ -18,12 +18,12 @@ There's not much here yet.
 Let's deploy our application with `kapp`.  
 
 ```execute
-kapp deploy --app tce-swag -f tce-swag-deploy.yaml
+kapp deploy --app tce-swag --yes -f tce-swag-deploy.yaml
 ```
 
 `kapp deploy` improves `kubectl apply` in a few ways.
 You'll notice that it waits for our resources to become ready before it exits.
-While it's waiting, it tells us about what's happenning to them.
+While it's waiting, it tells us about what's happening to them.
 
 Our app also groups our resources under a single app-name.
 
