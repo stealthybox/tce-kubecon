@@ -24,7 +24,7 @@ Print the link with the below command to visit the store's `/swag/` endpoint -- 
 It may take a minute or two for the URL to resolve via the internet's DNS servers.
 
 ```execute
-kubectl get service tce-swag --no-headers | awk '{print "https://" $4 "/swag/"}'
+kubectl get service tce-swag --no-headers | awk '{print "http://" $4 "/swag/"}'
 ```
 
 Congratulations!  
