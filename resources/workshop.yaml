@@ -3,8 +3,8 @@ kind: Workshop
 metadata:
   name: tce-kubecon
 spec:
-  title: Tanzu Community Edition Getting Started
-  description: Learn how Tanzu Community Edition can help you
+  title: VMware Tanzu Community Edition KubeCon NA 2021 Workshop
+  description: Learn how Tanzu Community Edition helps you install packages and deploy apps—and score some sweet swag in the process.
   vendor: eduk8s.io
   difficulty: beginner
   duration: 15m
