@@ -23,11 +23,11 @@ Unless the deployment is deleted, app pods will always be created to satisfy the
 Scaling an application is very simple. You don't need to think about how many to add or remove.
 Instead, you specify the number of instances you want for the Deployment, and Kubernetes will automatically scale the app to the desired state.
 
-Currently, the tce-swag application only has one instance, let's scale the app to have 3 instances.
+Currently, the tce-swag application only has one instance, let's scale the app to have 2 instances.
 ```execute
-kubectl scale deployment/tce-swag --replicas=3
+kubectl scale deployment/tce-swag --replicas=2
 ```
-This will update the Deployment and scale to 3 pods.
+This will update the Deployment and scale to 2 pods.
 Let's confirm
 
 ```execute
