@@ -1,14 +1,16 @@
 modules:
     overview:
         name: Tanzu Community Edition Overview
-    exercises/01-deploy-modern-apps:
-        name: Deploy Modern Apps
-    exercises/02-scale-application:
-        name: Scale Applications
-    exercises/03-publish-application:
-        name: Publish Applications
-    exercises/04-monitor-apps:   
-        name: Monitor Applications
+    exercises/01-packages:
+        name: Packages
+    exercises/02-deploy:
+        name: Deploying with `kapp`
+    exercises/03-monitor:
+        name: Monitor with Grafana
+    exercises/04-scale:
+        name: Scale
+    exercises/05-publish:
+        name: Publish our App
     summary:
         name: Summary
         exit_sign: Finish

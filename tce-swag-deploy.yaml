@@ -1,0 +1,48 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tce-swag
+  labels:
+    app: tce-swag
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tce-swag
+  template:
+    metadata:
+      labels:
+        app: tce-swag
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "9113"
+    spec:
+      containers:
+        - name: tce-swag
+          image: ghcr.io/stealthybox/tce-swag:latest
+          imagePullPolicy: "IfNotPresent"
+          ports:
+            - name: http
+              containerPort: 80
+            - name: status
+              containerPort: 8080
+          volumeMounts:
+          - name: code
+            mountPath: /usr/share/nginx/html/code/
+        - name: metrics
+          image: nginx/nginx-prometheus-exporter:0.9.0
+          imagePullPolicy: "IfNotPresent"
+          args:
+            - -nginx.scrape-uri
+            - http://127.0.0.1:8080/nginx_status
+          ports:
+            - name: metrics
+              containerPort: 9113
+      volumes:
+        - name: code
+          configMap:
+            name: code
+      automountServiceAccountToken: false
+      shareProcessNamespace: false
+      serviceAccountName: default

@@ -3,8 +3,9 @@ name: tce dev guide
 modules:
     activate:
     - overview
-    - exercises/01-deploy-modern-apps
-    - exercises/02-scale-application
-    - exercises/03-publish-application
-    - exercises/04-monitor-apps
+    - exercises/01-packages
+    - exercises/02-deploy
+    - exercises/03-monitor
+    - exercises/04-scale
+    - exercises/05-publish
     - summary

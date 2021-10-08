@@ -1,12 +1,14 @@
-Tanzu Community Edition provides a quickstart way to provision a Kubernetes centric platform on any Infrastructure/Cloud Provider of choice. 
+Tanzu Community Edition provides a quick, maintainable way to provision a Kubernetes-centric platform on your infrastructure or cloud-provider of choice. 
 
-It also helps installing additional tooling needed to Update, Manage and Monitor Modern Applications.
+It provides a package repository to help you build and manage your toolset.
+Additionally, the Carvel tool `kapp` provides an improved way to work on top of Tanzu Community Edition clusters and stay organized.
+You can install `kapp` and other Carvel tools, separately, in addition to Tanzu Community Edition.
 
-To learn More about Tanzu Community Edition:
+Visit these links to learn more:
 
 - Website: tanzucommunityedition.io
 - Github:  vmware-tanzu/community-edition
 
-Learn more about Tanzu via various interactive environments on https://learn.tanzu.io
+To learn more through Tanzu related workshops visit https://learn.tanzu.io.
 
-Thank you!
+Cheers!
