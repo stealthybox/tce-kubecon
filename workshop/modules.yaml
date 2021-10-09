@@ -14,3 +14,4 @@ modules:
     summary:
         name: Summary
         exit_sign: Finish
+        exit_link: https://tanzucommunityedition.io/download/
