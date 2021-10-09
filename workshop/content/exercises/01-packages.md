@@ -15,12 +15,12 @@ tanzu package available list
 
 We can install Prometheus and Grafana by simply selecting the version from the available packages list. 
 
-# Install Prometheus & Grafana
+# Prometheus & Grafana
 
 For our platform we need Prometheus and Grafana.
 
-Prometheus is a tool that can ingest application metrics and store them in a time series database.
-Grafana lets us visualize metrics that Prometheus gathers in our own custom dashboards.
+**Prometheus** is a tool that can ingest application metrics and store them in a time series database.  
+**Grafana** lets us visualize metrics that Prometheus gathers in our own custom dashboards.
 
 Our cluster admin has already installed these packages for us using the Tanzu CLI.
 Let's show which packages are installed:
@@ -29,16 +29,16 @@ Let's show which packages are installed:
 tanzu package installed list
 ```
 
-Below are the commands our cluster admin used to install those packages for us:
-**Note: These are made non-executable on purpose as the Kubernetes Cluster is shared. Re-running them commands will show a message that they are already installed. **
-```
+Below are the commands our cluster admin used to install those packages for us:  
+**Note:** These are non-executable on purpose as the Kubernetes Cluster is shared. Re-running them commands will show a message that they are already installed.
+```shell
 tanzu package install prometheus --package-name prometheus.community.tanzu.vmware.com --version 2.27.0 
 ```
-```
+```shell
 tanzu package install grafana --package-name grafana.community.tanzu.vmware.com --version 7.5.7 --values-file grafana-tce.yaml 
 ```
 
-We can also verify this by looking at the Deployments and Pods in the Cluster
+We can also show these packages running by looking at the Deployments and Pods in the Cluster
 
 ```execute
 kubectl get deployments,pods -n prometheus
