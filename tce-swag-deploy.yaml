@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
         - name: tce-swag
-          image: ghcr.io/stealthybox/tce-swag:latest
+          image: ghcr.io/stealthybox/tce-swag:v1
           imagePullPolicy: "IfNotPresent"
           ports:
             - name: http

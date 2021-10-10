@@ -20,12 +20,12 @@ kubectl get services
 
 Check that the `EXTERNAL-IP` column of the `tce-swag` service gets a value.
 
-Print the link with the below command to visit the store's `/swag/` endpoint -- your **unique code** will be at the top of the page!
+Print the link with the below command to get your **unique code**.
 It may take a minute or two for the URL to resolve via the internet's DNS servers.
 
 ```execute
-kubectl get service tce-swag --no-headers | awk '{print "http://" $4 "/swag/"}'
+kubectl get service tce-swag --no-headers | awk '{print "http://" $4}'
 ```
 
 Congratulations!  
-Input your *e-mail* and *access-code* to order your choice of swag -- it's well earned.
+Click "Copy 📋", then "Order Swag" and input your *e-mail* and *access-code* to start your order -- it's well earned.
